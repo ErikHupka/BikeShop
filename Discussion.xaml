@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:BikeShop"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Discussion">
-
+      Title="Discussion"
+      xmlns:data="clr-namespace:BikeShop">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -18,7 +18,25 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <ListBox Grid.ColumnSpan="2"
-                 Margin="5" />
+                 Margin="5">
+            <ListBox.ItemsSource>
+                <data:Talk />
+            </ListBox.ItemsSource>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Width="300">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="\img\chat.png"
+                                   Width="20" />
+                            <TextBlock Text="{Binding Sender}" />
+                        </StackPanel>
+                        <TextBlock Text="{Binding Content}"
+                                   Margin="20,0,0,0"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <Button Grid.Row="1"
                 Grid.Column="1"
                 Margin="5"
